@@ -9,20 +9,73 @@ namespace nLove_homework04
     {
         static void Main(string[] args)
         {
+            string answer = "yes";
+            //parameters
+            //width
+            double w;
+            //length
+            double l;
+            //area
+            double a;
+            //perimeter
+            double p;
 
+            //create new default object
+            Rectangle square = new Rectangle();
+            Console.WriteLine("Area of the square is {0}.", square.Area());
+            Console.WriteLine("Perimeter of the square is {0}.", square.Perimeter());
+
+            //loop for recalculating
+            while (answer == "yes")
+            {
+                Console.WriteLine("");
+                Console.WriteLine("What is the width of the Rectangle?");
+                string wid = Console.ReadLine();
+                w = Int32.Parse(wid);
+                if (w<=0)
+                {
+                    Console.WriteLine("Invalid value!");
+                    continue;
+                }
+                Console.WriteLine("");
+                Console.WriteLine("What is the length of the Rectangle?");
+                string len = Console.ReadLine();
+                l = Int32.Parse(len);
+                if (l <= 0)
+                {
+                    Console.WriteLine("Invalid value!");
+                    continue;
+                }
+
+                //create new custom object
+
+                Rectangle rectangle = new Rectangle(w, l);
+
+                //calculate area
+                Console.WriteLine("Area of the rectagle is {0}.", rectangle.Area());
+                //calculate perimeter
+                Console.WriteLine("Perimeter of the rectangle is {0}.", rectangle.Perimeter());
+
+
+
+                Console.WriteLine("Do you want to change the values and recalculate? (yes/no)");
+                answer = Console.ReadLine();
+            }
+            
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
     }
 
-
+    // create class
     public class Rectangle
     {
 
         private double _width;
         private double _length;
 
+        //default constructor
         public Rectangle()
         {
             _width = 1;
@@ -30,6 +83,7 @@ namespace nLove_homework04
             Console.WriteLine("It's a Square!");
         }
 
+        //custom constructor
         public Rectangle(double width, double length)
         {
             this._width = width;
@@ -38,16 +92,25 @@ namespace nLove_homework04
 
         }
 
+        //to see the erase message in the end - start the program without debugging - or hotkeys:ctrl+fn+F5
+        ~Rectangle()
+        {
+            Console.WriteLine("You erased rectangle");
+        }
+
+        //getters and setters for width and length
         public string Width { get; set; }
 
         public string Length { get; set; }
 
-       public double Area () {
+        //Area method
+        public double Area () {
 
             return _width * _length;
                        
-       }
+        }
 
+        //Perimeter method
         public double Perimeter() {
 
             return (_width + _length) * 2;
@@ -61,17 +124,3 @@ namespace nLove_homework04
 
 }
 
-
-/*
- * 
- * Console.WriteLine("The combined ages of {0} and {1} is {2}", persons[0].Name, persons[1].Name, persons[0] + persons[1]);
-            Console.WriteLine();
-            Person[] p3 = new Person[1];
-            p3[0] = new Person();
-
-            p3[0].Name = "Masha";
-            p3[0].Age = -4;
-p3[0].GreetFriend();
- * 
- * /
- */
